@@ -1,0 +1,38 @@
+
+# Portfólio — Leticia Amaral
+
+Meu portfólio pessoal, criado para apresentar minha trajetória
+profissional, meus projetos e meus conhecimentos.
+
+## Sobre o projeto
+
+Este site reúne minha experiência em gestão de pessoas,
+atendimento ao cliente e meu interesse por tecnologia.
+
+## Tecnologias utilizadas
+
+- HTML5
+- CSS3
+- Git e GitHub
+
+## Estrutura do projeto
+
+```text
+meu-portfolio/
+├── index.html
+├── style.css
+├── README.md
+└── assets/
+    ├── leticia-avatar.png
+    └── leticia-sobremim.png
+```
+
+## Como executar
+
+1. Clone este repositório.
+2. Abra a pasta do projeto no VS Code.
+3. Abra o arquivo `index.html` com a extensão Live Server.
+
+## Contato
+
+- LinkedIn: https://www.linkedin.com/in/aleticiamaral/

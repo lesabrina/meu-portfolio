@@ -1,0 +1,1629 @@
+/* =========================================================
+   PORTFÓLIO — LETICIA AMARAL
+
+   1. Identidade visual e configurações gerais
+   2. Cabeçalho e menu
+   3. Tela inicial
+   4. Apresentação e botão LinkedIn
+   5. Imagem inicial
+   6. Configurações gerais das seções
+   7. Sobre mim
+   8. Projetos
+   9. Habilidades
+   10. Rodapé e redes sociais
+   11. Tablets
+   12. Celulares
+   13. Acessibilidade
+========================================================= */
+
+
+/* 1. IDENTIDADE VISUAL E CONFIGURAÇÕES GERAIS */
+
+:root {
+    /* Cores principais da marca */
+    --amarelo: #f5c129;
+    --azul: #327fa3;
+
+    /* Cores de apoio */
+    --azul-escuro: #20566f;
+    --azul-claro: #edf4f7;
+    --azul-hover: #286b8b;
+    --amarelo-hover: #ffda69;
+    --amarelo-suave: #fff0bd;
+
+    /* Verde para indicar projeto desenvolvido */
+    --verde: #397b59;
+    --verde-escuro: #285d42;
+    --verde-claro: #eaf4ed;
+
+    /* Cores neutras */
+    --branco: #ffffff;
+    --fundo-claro: #fffaf0;
+    --texto: #26343b;
+    --texto-secundario: #56656c;
+    --borda: rgba(50, 127, 163, 0.18);
+
+    /* Sombras */
+    --sombra-suave: 0 5px 18px rgba(32, 44, 51, 0.05);
+    --sombra-card: 0 8px 24px rgba(32, 44, 51, 0.07);
+    --sombra-hover: 0 14px 30px rgba(32, 44, 51, 0.12);
+
+    /* Layout e movimento */
+    --largura-conteudo: 1100px;
+    --transicao: 0.3s ease;
+    --fonte-texto: Arial, Helvetica, sans-serif;
+    --fonte-titulo: Georgia, "Times New Roman", serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: var(--fonte-texto);
+    color: var(--texto);
+    background-color: var(--fundo-claro);
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* 2. CABEÇALHO E MENU */
+
+.cabecalho {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    width: 100%;
+    min-height: 76px;
+    padding: 12px 9%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    background-color: rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo-letra {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+
+    font-family: var(--fonte-titulo);
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo-letra + .logo-letra {
+    margin-left: -7px;
+}
+
+.logo-amarelo {
+    background-color: var(--amarelo);
+    color: var(--azul-escuro);
+}
+
+.logo-azul {
+    background-color: var(--azul);
+    color: var(--branco);
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.menu-link {
+    position: relative;
+    padding: 12px 0;
+
+    color: var(--branco);
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: color var(--transicao);
+}
+
+.menu-link:hover {
+    color: var(--amarelo);
+}
+
+.menu-link:focus-visible,
+.logo:focus-visible,
+.rodape a:focus-visible {
+    outline: 3px solid var(--amarelo);
+    outline-offset: 5px;
+    border-radius: 3px;
+}
+
+.menu-link.ativo::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background-color: var(--amarelo);
+    border-radius: 3px;
+}
+
+
+/* 3. TELA INICIAL E DIVISÃO DIAGONAL */
+
+.inicio {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    display: grid;
+    grid-template-columns: 54% 46%;
+    align-items: center;
+
+    background-color: var(--amarelo);
+}
+
+.fundo-azul {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background-color: var(--azul);
+
+    clip-path: polygon(
+        0 0,
+        45.5% 0,
+        66% 100%,
+        0 100%
+    );
+}
+
+
+/* 4. APRESENTAÇÃO E BOTÃO LINKEDIN */
+
+.apresentacao {
+    position: relative;
+    z-index: 2;
+
+    padding: 110px 0 50px 12%;
+
+    color: var(--branco);
+}
+
+.saudacao {
+    margin-bottom: 8px;
+
+    font-family: var(--fonte-titulo);
+    font-size: clamp(23px, 2.5vw, 32px);
+}
+
+.apresentacao h1 {
+    margin-bottom: 14px;
+
+    color: var(--amarelo);
+
+    font-family: var(--fonte-titulo);
+    font-size: clamp(42px, 5vw, 72px);
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+}
+
+.subtitulo {
+    max-width: 650px;
+    margin-bottom: 35px;
+
+    font-size: clamp(18px, 2vw, 27px);
+    line-height: 1.5;
+}
+
+.botao-linkedin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    min-width: 300px;
+    padding: 17px 25px;
+
+    border-radius: 50px;
+
+    background-color: var(--amarelo);
+    color: var(--azul-escuro);
+
+    font-size: 17px;
+    font-weight: bold;
+
+    box-shadow: 0 8px 20px rgba(25, 49, 60, 0.12);
+
+    transition:
+        transform var(--transicao),
+        box-shadow var(--transicao),
+        background-color var(--transicao);
+}
+
+.botao-linkedin:hover {
+    transform: translateY(-3px);
+    background-color: var(--amarelo-hover);
+    box-shadow: 0 12px 25px rgba(25, 49, 60, 0.2);
+}
+
+.botao-linkedin:focus-visible {
+    outline: 3px solid var(--branco);
+    outline-offset: 4px;
+}
+
+.linkedin-icone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+
+    border-radius: 4px;
+
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+
+    font-family: Arial, sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+
+/* 5. IMAGEM DA TELA INICIAL */
+
+/*
+   IMAGEM DA HOME
+   Arquivo: assets/leticia-avatar.png
+   Classe: .leticia-avatar
+
+   Para trocar a imagem, altere o src no index.html.
+
+   A imagem agora ocupa uma área maior da coluna direita.
+   O tamanho da imagem da Home é independente da seção Sobre mim.
+*/
+
+.area-foto {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 580px;
+    padding: 85px 3% 20px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Aumenta a imagem principal sem alterar a imagem Sobre mim. */
+.leticia-avatar {
+    display: block;
+
+    width: 120%;
+    max-width: 600px;
+    height: auto;
+
+    flex-shrink: 0;
+
+    object-fit: contain;
+    object-position: center bottom;
+
+    transform: scale(1.04);
+    transform-origin: center bottom;
+
+    transition: transform var(--transicao);
+}
+
+.leticia-avatar:hover {
+    transform: scale(1.07) translateY(-4px);
+}
+
+.detalhe {
+    display: none;
+}
+
+
+/* 6. CONFIGURAÇÕES GERAIS DAS SEÇÕES */
+
+.secao {
+    padding: 90px 8%;
+}
+
+.cabecalho-secao {
+    width: 100%;
+    max-width: var(--largura-conteudo);
+    margin: 0 auto 38px;
+}
+
+.etiqueta {
+    margin-bottom: 14px;
+
+    color: var(--azul);
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.secao h2 {
+    max-width: 800px;
+    margin-bottom: 22px;
+
+    color: var(--azul-escuro);
+    font-family: var(--fonte-titulo);
+    font-size: clamp(30px, 4vw, 46px);
+    line-height: 1.2;
+}
+
+.texto-secao {
+    max-width: 800px;
+
+    color: var(--texto-secundario);
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+
+/* 7. SOBRE MIM */
+
+.sobre {
+    background-color: var(--fundo-claro);
+}
+
+.sobre .cabecalho-secao {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sobre .cabecalho-secao h2 {
+    margin-right: auto;
+    margin-left: auto;
+
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 400;
+    line-height: 1.45;
+}
+
+.sobre .etiqueta {
+    margin-bottom: 10px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+}
+
+.sobre-conteudo {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+}
+
+.sobre-imagem-container {
+    width: 100%;
+    min-width: 0;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*
+   IMAGEM DA SEÇÃO SOBRE MIM
+   Arquivo: assets/leticia-sobremim.png
+   Classe: .leticia-sobremim
+
+   Este estilo é independente de .leticia-avatar.
+   Altere o tamanho desta imagem sem afetar a imagem da Home.
+*/
+
+.leticia-sobremim {
+    display: block;
+
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    max-height: 650px;
+
+    object-fit: contain;
+    object-position: center;
+
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+
+    transition: transform var(--transicao);
+}
+
+.leticia-sobremim:hover {
+    transform: translateY(-3px);
+}
+
+.sobre-texto {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+
+    color: var(--texto-secundario);
+    font-size: 16px;
+    line-height: 1.85;
+}
+
+.sobre-texto > p {
+    margin-bottom: 18px;
+}
+
+.curiosidade {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    margin-top: 28px;
+    padding: 18px 20px;
+
+    border-left: 4px solid var(--amarelo);
+    border-radius: 0 10px 10px 0;
+
+    background-color: var(--branco);
+    box-shadow: var(--sombra-suave);
+}
+
+.curiosidade p {
+    margin: 0;
+
+    color: var(--texto-secundario);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.curiosidade strong {
+    color: var(--texto);
+}
+
+.curiosidade-icone {
+    flex-shrink: 0;
+
+    color: var(--azul);
+
+    font-family: var(--fonte-titulo);
+    font-size: 30px;
+    line-height: 1;
+}
+
+
+/* 8. PROJETOS */
+
+.projetos {
+    background-color: var(--azul-claro);
+}
+
+.projetos .cabecalho-secao {
+    text-align: center;
+}
+
+.projetos .cabecalho-secao h2,
+.projetos .texto-secao {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.vitrine-projetos {
+    width: 100%;
+    max-width: var(--largura-conteudo);
+    margin: 0 auto;
+}
+
+.grade-projetos {
+    width: 100%;
+    max-width: 850px;
+    margin-right: auto;
+    margin-left: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.grade-projetos-extra {
+    margin-top: 24px;
+}
+
+.grade-projetos-extra[hidden] {
+    display: none;
+}
+
+.quadrado-projeto {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    aspect-ratio: 1 / 1;
+    min-width: 0;
+    padding: 28px 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+
+    background: var(--branco);
+    box-shadow: var(--sombra-card);
+
+    transition:
+        transform var(--transicao),
+        box-shadow var(--transicao);
+}
+
+.quadrado-projeto:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-hover);
+}
+
+.numero-projeto {
+    position: absolute;
+    top: 18px;
+    left: 20px;
+
+    color: var(--azul);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.icone-projeto {
+    margin-bottom: 14px;
+
+    color: var(--azul);
+    font-family: var(--fonte-titulo);
+    font-size: 35px;
+    line-height: 1;
+}
+
+.quadrado-projeto h3 {
+    margin-bottom: 9px;
+
+    color: var(--texto);
+    font-family: var(--fonte-titulo);
+    font-size: clamp(18px, 1.8vw, 23px);
+    line-height: 1.25;
+}
+
+.quadrado-projeto p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.faixa-projeto {
+    position: absolute;
+    top: 48%;
+    left: -12%;
+    z-index: 2;
+
+    width: 124%;
+    min-height: 39px;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: rotate(-9deg);
+    transform-origin: center;
+
+    border-top: 2px solid var(--branco);
+    border-bottom: 2px solid var(--branco);
+
+    box-shadow: 0 5px 14px rgba(32, 44, 51, 0.16);
+
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1.1px;
+    white-space: nowrap;
+
+    transition:
+        width 0.35s ease,
+        left 0.35s ease,
+        min-height 0.35s ease,
+        font-size 0.35s ease;
+}
+
+.faixa-projeto span {
+    display: block;
+    flex: 0 0 auto;
+    text-align: center;
+}
+
+/* Amarelo: projeto que está em andamento. */
+.faixa-andamento {
+    background: var(--amarelo);
+    color: var(--azul-escuro);
+}
+
+/* Verde: projeto desenvolvido no âmbito profissional. */
+.faixa-desenvolvido {
+    background: var(--verde);
+    color: var(--branco);
+}
+
+/* Azul: projeto que ainda será apresentado. */
+.faixa-breve {
+    background: var(--azul);
+    color: var(--branco);
+}
+
+.quadrado-projeto:hover .faixa-projeto {
+    left: -25%;
+    width: 150%;
+    min-height: 47px;
+    font-size: 13px;
+}
+
+.quadrado-em-breve {
+    background: var(--fundo-claro);
+    border-style: dashed;
+    border-color: rgba(50, 127, 163, 0.4);
+}
+
+.quadrado-em-breve .icone-projeto {
+    color: var(--azul);
+}
+
+.acoes-projetos {
+    display: flex;
+    justify-content: center;
+    margin-top: 36px;
+}
+
+.botao-ver-mais {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+
+    min-width: 165px;
+    padding: 14px 24px;
+
+    border: 2px solid var(--azul);
+    border-radius: 50px;
+
+    background-color: var(--azul);
+    color: var(--branco);
+
+    font: inherit;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition:
+        transform var(--transicao),
+        color var(--transicao),
+        background-color var(--transicao),
+        box-shadow var(--transicao);
+}
+
+.botao-ver-mais:hover {
+    transform: translateY(-3px);
+    background-color: var(--azul-escuro);
+    border-color: var(--azul-escuro);
+    box-shadow: 0 8px 18px rgba(32, 86, 111, 0.2);
+}
+
+.botao-ver-mais:focus-visible {
+    outline: 3px solid var(--amarelo);
+    outline-offset: 4px;
+}
+
+.seta-botao {
+    font-size: 20px;
+    line-height: 1;
+}
+
+
+/* 9. HABILIDADES */
+
+.habilidades {
+    background-color: var(--fundo-claro);
+}
+
+.habilidades .cabecalho-secao {
+    text-align: center;
+}
+
+.habilidades .cabecalho-secao h2,
+.habilidades .texto-secao {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.categorias-habilidades {
+    width: 100%;
+    max-width: var(--largura-conteudo);
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+}
+
+.grupo-habilidades {
+    min-width: 0;
+}
+
+.titulo-grupo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    margin-bottom: 22px;
+}
+
+.icone-grupo {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    font-family: var(--fonte-titulo);
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.titulo-grupo h3 {
+    margin-bottom: 3px;
+
+    color: var(--azul-escuro);
+
+    font-family: var(--fonte-titulo);
+    font-size: 23px;
+    line-height: 1.3;
+}
+
+.titulo-grupo p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Variações discretas dentro da identidade visual. */
+
+.ferramentas .icone-grupo,
+.gestao-pessoas .icone-grupo {
+    background-color: var(--azul-claro);
+    color: var(--azul);
+}
+
+.indicadores .icone-grupo,
+.aprendizado .icone-grupo {
+    background-color: var(--amarelo-suave);
+    color: var(--azul-escuro);
+}
+
+
+/* Cartões de habilidades */
+
+.grade-habilidades {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.item-habilidade {
+    position: relative;
+    isolation: isolate;
+
+    min-width: 0;
+    min-height: 112px;
+    padding: 17px 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+
+    background-color: var(--branco);
+    color: var(--texto);
+
+    font: inherit;
+    text-align: center;
+    cursor: pointer;
+
+    box-shadow: var(--sombra-suave);
+
+    transition:
+        transform var(--transicao),
+        border-color var(--transicao),
+        box-shadow var(--transicao),
+        background-color var(--transicao);
+}
+
+.item-habilidade:hover,
+.item-habilidade[aria-expanded="true"] {
+    z-index: 3;
+
+    transform: translateY(-3px);
+
+    border-color: var(--azul);
+    box-shadow: 0 9px 24px rgba(32, 86, 111, 0.12);
+}
+
+.item-habilidade:focus-visible {
+    z-index: 3;
+    outline: 3px solid var(--amarelo);
+    outline-offset: 3px;
+}
+
+.icone-habilidade {
+    min-height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--azul);
+
+    font-family: var(--fonte-texto);
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.nome-habilidade {
+    color: var(--texto);
+
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* Descrição que aparece no mouse, teclado ou toque */
+
+.descricao-habilidade {
+    position: absolute;
+    top: calc(100% + 9px);
+    left: 50%;
+    z-index: 10;
+
+    width: 230px;
+    max-width: min(230px, 78vw);
+    padding: 13px 15px;
+
+    border: 1px solid rgba(50, 127, 163, 0.2);
+    border-radius: 10px;
+
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.65;
+    text-align: left;
+
+    box-shadow: 0 10px 25px rgba(32, 44, 51, 0.18);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translate(-50%, -5px);
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease,
+        transform 0.2s ease;
+}
+
+.descricao-habilidade::before {
+    content: "";
+
+    position: absolute;
+    top: -6px;
+    left: calc(50% - 6px);
+
+    width: 10px;
+    height: 10px;
+
+    background-color: var(--azul-escuro);
+
+    border-top: 1px solid rgba(50, 127, 163, 0.2);
+    border-left: 1px solid rgba(50, 127, 163, 0.2);
+
+    transform: rotate(45deg);
+}
+
+.item-habilidade:hover .descricao-habilidade,
+.item-habilidade:focus-visible .descricao-habilidade,
+.item-habilidade[aria-expanded="true"] .descricao-habilidade {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translate(-50%, 0);
+}
+
+
+/* Indicadores: destaque amarelo suave */
+
+.indicadores .item-habilidade {
+    border-color: rgba(245, 193, 41, 0.45);
+}
+
+.indicadores .icone-habilidade {
+    color: var(--azul-escuro);
+}
+
+/* Gestão de pessoas: destaque azul */
+
+.gestao-pessoas .item-habilidade {
+    border-color: rgba(50, 127, 163, 0.25);
+}
+
+.gestao-pessoas .icone-habilidade {
+    color: var(--azul);
+}
+
+/* Aprendizado contínuo: combinação de azul e amarelo */
+
+.aprendizado .item-habilidade {
+    border-color: rgba(50, 127, 163, 0.25);
+}
+
+.aprendizado .icone-habilidade {
+    color: var(--azul-escuro);
+}
+
+
+/* Subcategorias dos indicadores */
+
+.subgrupos-indicadores {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.subgrupo-indicador h4 {
+    margin-bottom: 13px;
+
+    color: var(--texto);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.dica-habilidades {
+    margin: 28px auto 0;
+
+    color: var(--texto-secundario);
+    font-size: 13px;
+    text-align: center;
+}
+
+.dica-habilidades span {
+    margin-right: 5px;
+    color: var(--azul);
+}
+
+
+/* 10. RODAPÉ E REDES SOCIAIS */
+
+.rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    padding: 25px 8%;
+
+    border-top: 1px solid rgba(38, 52, 59, 0.12);
+
+    color: var(--texto-secundario);
+    font-size: 13px;
+}
+
+.rodape-creditos {
+    max-width: 600px;
+}
+
+.redes-sociais {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.icone-social {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--borda);
+    border-radius: 50%;
+
+    background-color: var(--branco);
+    color: var(--azul);
+
+    box-shadow: var(--sombra-suave);
+
+    transition:
+        transform var(--transicao),
+        color var(--transicao),
+        background-color var(--transicao),
+        border-color var(--transicao),
+        box-shadow var(--transicao);
+}
+
+.icone-social svg {
+    display: block;
+
+    width: 20px;
+    height: 20px;
+
+    fill: currentColor;
+}
+
+.icone-social:hover {
+    transform: translateY(-4px);
+
+    background-color: var(--azul);
+    border-color: var(--azul);
+    color: var(--branco);
+
+    box-shadow: var(--sombra-card);
+}
+
+.icone-social:focus-visible {
+    outline: 3px solid var(--amarelo);
+    outline-offset: 4px;
+}
+
+
+/* 11. RESPONSIVIDADE PARA TABLETS */
+
+@media (max-width: 850px) {
+
+    .cabecalho {
+        padding: 12px 5%;
+        gap: 18px;
+    }
+
+    .menu {
+        gap: 18px;
+    }
+
+    .menu-link {
+        font-size: 13px;
+    }
+
+    .inicio {
+        grid-template-columns: 52% 48%;
+    }
+
+    .apresentacao {
+        padding-left: 8%;
+    }
+
+    .apresentacao h1 {
+        font-size: clamp(38px, 5vw, 52px);
+    }
+
+    .subtitulo {
+        font-size: 18px;
+    }
+
+    .botao-linkedin {
+        min-width: 0;
+        padding: 15px 20px;
+        gap: 10px;
+        font-size: 14px;
+    }
+
+    .area-foto {
+        min-height: 480px;
+        padding: 80px 0 20px;
+    }
+
+    /* Imagem da Home: ajuste exclusivo para tablets. */
+    .leticia-avatar {
+        width: 120%;
+        max-width: 460px;
+        height: auto;
+        transform: scale(1.03);
+    }
+
+    .leticia-avatar:hover {
+        transform: scale(1.06) translateY(-3px);
+    }
+
+    .secao {
+        padding-right: 6%;
+        padding-left: 6%;
+    }
+
+    .sobre-conteudo {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 4%;
+    }
+
+    .leticia-sobremim {
+        max-width: 100%;
+        max-height: 500px;
+    }
+
+    .sobre-texto {
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    /* Projetos */
+
+    .grade-projetos {
+        gap: 16px;
+    }
+
+    .quadrado-projeto {
+        padding: 24px 18px;
+    }
+
+    .quadrado-projeto p {
+        font-size: 13px;
+    }
+
+    .faixa-projeto {
+        min-height: 35px;
+        font-size: 10px;
+        letter-spacing: 0.7px;
+    }
+
+    .quadrado-projeto:hover .faixa-projeto {
+        min-height: 41px;
+        font-size: 11px;
+    }
+
+    /* Habilidades */
+
+    .grade-habilidades {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .categorias-habilidades {
+        gap: 36px;
+    }
+
+    /* Rodapé */
+
+    .rodape {
+        padding-right: 6%;
+        padding-left: 6%;
+    }
+
+    .redes-sociais {
+        gap: 9px;
+    }
+
+    .icone-social {
+        width: 39px;
+        height: 39px;
+    }
+}
+
+
+/* 12. RESPONSIVIDADE PARA CELULARES */
+
+@media (max-width: 600px) {
+
+    .cabecalho {
+        position: absolute;
+
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+
+        padding: 12px 15px;
+    }
+
+    .logo-letra {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+
+    .menu {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 6px 18px;
+    }
+
+    .menu-link {
+        padding: 7px 0;
+        font-size: 12px;
+    }
+
+    /* Tela inicial */
+
+    .inicio {
+        min-height: auto;
+
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+
+        padding-top: 135px;
+    }
+
+    .fundo-azul {
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            100% 48%,
+            0 58%
+        );
+    }
+
+    .apresentacao {
+        padding: 45px 7% 20px;
+        text-align: center;
+    }
+
+    .saudacao {
+        font-size: 23px;
+    }
+
+    .apresentacao h1 {
+        font-size: clamp(38px, 10vw, 52px);
+        letter-spacing: -1px;
+    }
+
+    .subtitulo {
+        margin: 15px auto 25px;
+        font-size: 17px;
+    }
+
+    .botao-linkedin {
+        max-width: 100%;
+    }
+
+    .area-foto {
+        min-height: 340px;
+        padding: 20px 0 35px;
+    }
+
+    /* Imagem da Home: maior e centralizada no celular. */
+    .leticia-avatar {
+        width: 100%;
+        max-width: 370px;
+        height: auto;
+        object-position: center bottom;
+        transform: scale(1.02);
+    }
+
+    .leticia-avatar:hover {
+        transform: scale(1.04);
+    }
+
+    /* Espaçamento geral das seções */
+
+    .secao {
+        padding: 65px 7%;
+    }
+
+    .secao h2 {
+        font-size: 32px;
+    }
+
+    .texto-secao {
+        font-size: 15px;
+    }
+
+    /* Sobre mim */
+
+    .sobre .cabecalho-secao {
+        margin-bottom: 28px;
+    }
+
+    .sobre .cabecalho-secao h2 {
+        font-size: 27px;
+    }
+
+    .sobre-conteudo {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .sobre-imagem-container {
+        width: 100%;
+        max-width: none;
+    }
+
+    /* Ajuste independente da imagem Sobre mim. */
+    .leticia-sobremim {
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+        max-height: 480px;
+    }
+
+    .sobre-texto {
+        max-width: 100%;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .curiosidade {
+        padding: 16px;
+    }
+
+    /* Projetos: uma coluna em celulares */
+
+    .grade-projetos {
+        max-width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .grade-projetos-extra {
+        margin-top: 20px;
+    }
+
+    .quadrado-projeto {
+        aspect-ratio: 1 / 1;
+        padding: 30px 26px;
+    }
+
+    .quadrado-projeto h3 {
+        font-size: 23px;
+    }
+
+    .quadrado-projeto p {
+        max-width: 300px;
+        font-size: 14px;
+    }
+
+    .faixa-projeto {
+        left: -12%;
+        width: 124%;
+        min-height: 39px;
+        font-size: 11px;
+        letter-spacing: 0.7px;
+    }
+
+    .quadrado-projeto:hover .faixa-projeto {
+        left: -12%;
+        width: 124%;
+        min-height: 39px;
+        font-size: 11px;
+    }
+
+    .acoes-projetos {
+        margin-top: 28px;
+    }
+
+    /* Habilidades */
+
+    .categorias-habilidades {
+        gap: 32px;
+    }
+
+    .titulo-grupo {
+        align-items: flex-start;
+        gap: 12px;
+
+        margin-bottom: 18px;
+    }
+
+    .icone-grupo {
+        width: 42px;
+        height: 42px;
+
+        border-radius: 11px;
+        font-size: 24px;
+    }
+
+    .titulo-grupo h3 {
+        font-size: 20px;
+    }
+
+    .titulo-grupo p {
+        font-size: 13px;
+    }
+
+    .grade-habilidades {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 11px;
+    }
+
+    .item-habilidade {
+        min-height: 105px;
+        padding: 14px 9px;
+    }
+
+    .icone-habilidade {
+        font-size: 23px;
+    }
+
+    .nome-habilidade {
+        font-size: 12px;
+    }
+
+    /* No celular, a descrição aparece dentro do cartão. */
+
+    .descricao-habilidade {
+        position: static;
+
+        display: none;
+
+        width: 100%;
+        max-width: none;
+        margin-top: 4px;
+        padding: 10px;
+
+        border: 0;
+        border-radius: 8px;
+
+        background-color: var(--azul-claro);
+        color: var(--azul-escuro);
+
+        font-size: 12px;
+        text-align: center;
+
+        box-shadow: none;
+
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+
+        transform: none;
+    }
+
+    .descricao-habilidade::before {
+        display: none;
+    }
+
+    .item-habilidade[aria-expanded="true"] .descricao-habilidade {
+        display: block;
+        transform: none;
+    }
+
+    .item-habilidade[aria-expanded="true"] {
+        align-self: start;
+        background-color: #f8fbfc;
+    }
+
+    .subgrupos-indicadores {
+        gap: 24px;
+    }
+
+    .subgrupo-indicador h4 {
+        font-size: 13px;
+    }
+
+    .dica-habilidades {
+        max-width: 280px;
+        font-size: 12px;
+    }
+
+    /* Rodapé e redes sociais */
+
+    .rodape {
+        flex-direction: column;
+        text-align: center;
+        gap: 18px;
+
+        padding: 25px 7%;
+    }
+
+    .rodape-creditos {
+        max-width: 340px;
+    }
+
+    .redes-sociais {
+        gap: 14px;
+    }
+
+    .icone-social {
+        width: 42px;
+        height: 42px;
+    }
+
+    .icone-social svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+/* 13. ACESSIBILIDADE E MOVIMENTO REDUZIDO */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}

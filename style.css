@@ -644,24 +644,40 @@ a {
     line-height: 1;
 }
 
+/* 2. Titulo padronizado (impede que 2 linhas empurrem o conteúdo) */
 .quadrado-projeto h3 {
     margin-bottom: 9px;
 
     color: var(--texto);
     font-family: var(--fonte-titulo);
-    font-size: clamp(18px, 1.8vw, 23px);
+    font-size: clamp(18px, 1.8vw, 22px);
     line-height: 1.25;
+
+    /* Garante altura uniforme para 1 ou 2 linhas */
+    min-height: 54px; 
+    display: flex;
+    align-items: center;
 }
 
 .quadrado-projeto p {
     color: var(--texto-secundario);
-    font-size: 14px;
-    line-height: 1.65;
+    font-size: 13.5px;
+    line-height: 1.5;
+
+    /* Garante que o texto fique posicionado após a faixa com margem adequada */
+    margin-top: 18px; 
+    
+    /* Limita o número de linhas para evitar que o texto transborde no fundo do cartão */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
+/* 3. Faixa perfeitamente centralizada */
 .faixa-projeto {
     position: absolute;
-    top: 48%;
+    top: 50%;
     left: -12%;
     z-index: 2;
 
@@ -673,7 +689,7 @@ a {
     align-items: center;
     justify-content: center;
 
-    transform: rotate(-9deg);
+    transform: translateY(-50%) rotate(-9deg); /* translateY(-50%) garante a centralização perfeita */
     transform-origin: center;
 
     border-top: 2px solid var(--branco);
@@ -1187,7 +1203,12 @@ a {
     }
 
     .subtitulo {
-        font-size: 18px;
+    max-width: 650px;
+    margin-bottom: 35px;
+
+    font-size: clamp(18px, 2vw, 24px);
+    line-height: 1.4;
+    font-weight: 600;
     }
 
     .botao-linkedin {
